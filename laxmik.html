@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Laxmi K – Portfolio</title>
+  <meta name="description" content="Java-focused fresher portfolio showcasing projects, skills, and contact." />
+  <meta name="theme-color" content="#10b981" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f14;         /* Background */
+      --panel:#121822;      /* Cards */
+      --muted:#8aa0b4;      /* Secondary text */
+      --text:#e6eef6;       /* Primary text */
+      --brand:#10b981;      /* Emerald */
+      --ring:rgba(16,185,129,.35);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --gap:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#0b0f14 0%,#0d131b 100%);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1050px;margin:0 auto;padding:26px}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(11,15,20,.6);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 26px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:radial-gradient(120% 120% at 20% 20%, #1ee3a2 0%, #0bbf86 35%, #0f9f73 65%, #0b7c59 100%);box-shadow:inset 0 0 12px rgba(255,255,255,.15), 0 6px 18px rgba(16,185,129,.35)}
+    .logo span{font-weight:800}
+    .name{font-weight:800;letter-spacing:.2px}
+    .nav a{padding:8px 12px;border-radius:10px}
+    .nav a:hover{background:rgba(255,255,255,.06)}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:var(--brand);color:#04110c;padding:10px 16px;border-radius:12px;font-weight:700;border:1px solid #0e9f77;box-shadow:0 6px 18px var(--ring);}
+    .btn:focus{outline:3px solid var(--ring)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .9fr;gap:32px;align-items:center;padding:56px 26px}
+    .hero-card{background:linear-gradient(180deg,#0f1621,#0c121a);border:1px solid rgba(255,255,255,.06);border-radius:calc(var(--radius) + 6px);padding:26px;box-shadow:var(--shadow)}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--muted);font-weight:600;background:rgba(16,185,129,.08);padding:6px 10px;border-radius:999px;border:1px solid rgba(16,185,129,.2)}
+    h1{font-size:40px;line-height:1.1;margin:16px 0 12px 0}
+    .lead{color:#cfe0ee;font-size:16px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .stat{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px;text-align:center}
+    .stat b{font-size:22px}
+
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+
+    /* Sections */
+    section{padding:38px 26px}
+    .section-title{font-size:22px;margin:0 0 14px 0;letter-spacing:.3px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+
+    /* About */
+    .about{grid-column:span 12}
+    .about p{color:#cfe0ee;margin:0}
+
+    /* Skills */
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{padding:8px 12px;border-radius:999px;background:#0e1722;border:1px solid rgba(255,255,255,.08);color:#d7e6f4}
+
+    /* Projects */
+    .projects{grid-column:span 12;display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+    .project{grid-column:span 6;background:linear-gradient(180deg,#0d141d,#0b1118);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+    .project img{width:100%;height:180px;object-fit:cover;border-bottom:1px solid rgba(255,255,255,.06)}
+    .project .body{padding:16px;display:flex;flex-direction:column;gap:10px}
+    .project .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);color:#bdf5df}
+    .project .actions{display:flex;gap:10px;margin-top:4px}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--gap)}
+    .contact .card p{color:#cfe0ee}
+    .contact form{display:grid;gap:12px}
+    input, textarea{width:100%;background:#0e1722;border:1px solid rgba(255,255,255,.12);color:var(--text);padding:12px;border-radius:12px}
+    input:focus,textarea:focus{outline:3px solid var(--ring);border-color:var(--brand)}
+    textarea{min-height:120px;resize:vertical}
+
+    /* Footer */
+    footer{padding:26px;color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width: 880px){
+      .hero{grid-template-columns:1fr;}
+      .contact{grid-template-columns:1fr}
+      .projects .project{grid-column:span 12}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner container">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🌿</div>
+        <div class="name">Laxmi K</div>
+      </div>
+      <div class="links" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="assets/Laxmi_K_Resume.pdf" download>Download Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero container">
+    <div class="hero-card">
+      <span class="eyebrow">Open To Internship · Java & Web Basics</span>
+      <h1>Hi, I’m Laxmi — A Curious Fresher Who Builds Clean, Simple Things.</h1>
+      <p class="lead">I’m learning <b>Java</b> and know basic <b>HTML/CSS</b>. I’m actively looking for an internship where I can contribute to real projects, learn fast, and ship value. Here are a few small projects and experiments I’ve built.</p>
+      <div class="cta">
+        <a class="btn" href="#projects">See Projects</a>
+        <a href="mailto:laxmi@example.com" class="btn" style="background:#0b2830;color:#c9fff0;border-color:#16413e">Email Me</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>Java</b><div>OOP · Basics</div></div>
+        <div class="stat"><b>Web</b><div>HTML · CSS</div></div>
+        <div class="stat"><b>Soft Skills</b><div>Ownership · Grit</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3 class="section-title" style="margin-top:0">Highlights</h3>
+      <ul>
+        <li>Built a <b>Number Guessing Game</b> in Java with input validation & attempt counter.</li>
+        <li>Coded a <b>Responsive Landing Page</b> with semantic HTML and CSS Grid.</li>
+        <li>Practicing <b>DSA basics</b> and version control with Git/GitHub.</li>
+      </ul>
+      <p style="color:#9fb5c8;margin-top:10px">Tip: Replace these with your real highlights. Keep them outcome-focused.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects">
+        <!-- Project 1 -->
+        <article class="project" aria-labelledby="p1-title">
+          <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=1200&auto=format&fit=crop" alt="Terminal-like abstract image"/>
+          <div class="body">
+            <h3 id="p1-title">Number Guessing Game (Java)</h3>
+            <p>A simple CLI game using Java’s <code>Random</code> and <code>Scanner</code> with input validation, attempt counter, and replay option. Good practice for classes and methods.</p>
+            <div class="tags">
+              <span class="tag">Java</span><span class="tag">OOP</span><span class="tag">CLI</span>
+            </div>
+            <div class="actions">
+              <a class="btn" href="#" aria-label="View source for Number Guessing Game">Source</a>
+              <a class="btn" href="#" aria-label="Read README for Number Guessing Game" style="background:#0b2830;color:#c9fff0;border-color:#16413e">README</a>
+            </div>
+          </div>
+        </article>
+        <!-- Project 2 -->
+        <article class="project" aria-labelledby="p2-title">
+          <img src="https://images.unsplash.com/photo-1512299287071-5c2ac5d0a6fd?q=80&w=1200&auto=format&fit=crop" alt="Minimal website layout sketch"/>
+          <div class="body">
+            <h3 id="p2-title">Responsive Portfolio Landing Page</h3>
+            <p>Static page built with semantic HTML, CSS Grid/Flexbox, and a11y-friendly landmarks. Deployed on GitHub Pages.</p>
+            <div class="tags">
+              <span class="tag">HTML</span><span class="tag">CSS Grid</span><span class="tag">Accessibility</span>
+            </div>
+            <div class="actions">
+              <a class="btn" href="#" aria-label="View live demo for Landing Page">Live</a>
+              <a class="btn" href="#" aria-label="View source for Landing Page" style="background:#0b2830;color:#c9fff0;border-color:#16413e">Source</a>
+            </div>
+          </div>
+        </article>
+        <!-- Project 3 -->
+        <article class="project" aria-labelledby="p3-title">
+          <img src="https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1200&auto=format&fit=crop" alt="Notebook and code"/>
+          <div class="body">
+            <h3 id="p3-title">DSA Mini Notes</h3>
+            <p>Concise notes on arrays, strings, and sorting with code snippets and complexity summaries. Written to learn by teaching.</p>
+            <div class="tags">
+              <span class="tag">Notes</span><span class="tag">Big-O</span><span class="tag">GitHub</span>
+            </div>
+            <div class="actions">
+              <a class="btn" href="#" aria-label="View DSA notes">View</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="card">
+        <div class="chips" aria-label="Skills list">
+          <span class="chip">Java (OOP Basics)</span>
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3</span>
+          <span class="chip">Git & GitHub</span>
+          <span class="chip">Responsive Design</span>
+          <span class="chip">Problem Solving</span>
+          <span class="chip">Communication</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="card about">
+        <p>I’m an undergrad, a fast learner, and I enjoy turning ideas into small, working projects. I’m currently focused on strengthening Java fundamentals and building web UIs with clean HTML/CSS. I’m seeking an internship where I can contribute, learn from reviews, and grow.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact">
+        <div class="card">
+          <p><b>Let’s talk.</b> I’m open to internship opportunities. Whether you have a project in mind or just want to connect, drop a message.</p>
+          <p>Email: <a href="mailto:laxmi@example.com">laxmi@example.com</a> · GitHub: <a href="#">github.com/laxmi</a> · LinkedIn: <a href="#">linkedin.com/in/laxmi</a></p>
+        </div>
+        <div class="card">
+          <form action="mailto:laxmi@example.com" method="post" enctype="text/plain">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write a short message…" required></textarea>
+            <button class="btn" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Laxmi K · Built with HTML & CSS
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
